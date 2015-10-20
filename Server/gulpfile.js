@@ -9,8 +9,15 @@ gulp.task('typescript-to-js', function() {
             .pipe(gulp.dest('.'));
 });
 
+gulp.task('zip', function () {
+    gulp.src('*')
+        .pipe(zip('archive.zip'))
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('default', function() {
   gulp.start('typescript-to-js');
+
 });
 
 /**
@@ -21,3 +28,4 @@ gulp.task('watch', function() {
     './**/*.ts',
   ], ['default']);
 });
+

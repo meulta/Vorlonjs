@@ -1,0 +1,11 @@
+{
+    "siteName": {
+        "value": "Dev-Vorlonjs"
+    },
+    "hostingPlanName": {
+        "value": "Dev-VorlonjsPlan"        
+    },
+    "siteLocation": {
+        "value": "West US"      
+    }
+}
