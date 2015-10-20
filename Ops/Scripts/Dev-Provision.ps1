@@ -37,34 +37,14 @@ Select-AzureSubscription -SubscriptionName $subscriptionName
 
 Switch-AzureMode -Name AzureResourceManager
 
-# Création d'un resource groupe
+# Resource groupe create
 New-AzureResourceGroup `
 	-Name $resourceGroupeName `
 	-Location $resourceLocation `
     -Tag @{Name=$tagName;Value=$tagValue} `
     -Verbose
 
-<#
-
-$storageAccount = Get-AzureStorageAccount –StorageAccountName $storageAccountName
-if (!$storageAccount)
-{   
-    $storageAccount = New-AzureStorageAccount -StorageAccountName $storageAccountName `
-                            -Location $resourceLocation -Verbose -ResourceGroupName $resourceGroupeName `
-                            -Type Standard_LRS
-    if ($storageAccount)
-    {
-        Write-Verbose "[Finish] creating $storageAccountName storage account in $resourceLocation location"
-    }
-    else
-    {
-        throw "Failed to create a Windows Azure storage account. Failure in Dev-Provision.ps1"
-    }
-}
-
-#>
-
-# Déploiement du resource group
+# Resource group deploy
 New-AzureResourceGroupDeployment `
     -Name $resourceGroupeDeploymentName `
 	-ResourceGroupName $resourceGroupeName `
