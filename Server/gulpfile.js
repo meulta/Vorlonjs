@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
-    typescript = require('gulp-typescript');
-    mocha = require('gulp-mocha');
+    typescript = require('gulp-typescript'),
+    mocha = require('gulp-mocha'),
+    zip = require('gulp-zip');
 
 gulp.task('typescript-to-js', function() {
   var tsResult = gulp.src(['./**/*.ts', '!./node_modules', '!./node_modules/**'], { base: './' })
