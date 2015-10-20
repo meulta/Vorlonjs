@@ -11,18 +11,18 @@ gulp.task('typescript-to-js', function() {
             .pipe(gulp.dest('.'));
 });
 
-gulp.task('zip', function() {
+gulp.task('zip', ['tests'], function() {
     gulp.src('*')
         .pipe(zip('archive.zip'))
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('tests', function() {
+gulp.task('tests', ['typescript-to-js'], function() {
     gulp.src('test/test.js')
         .pipe(mocha());
 });
 
-gulp.task('default', ['typescript-to-js', 'zip'], function() {
+gulp.task('default', ['zip'], function() {
 });
 
 /**
