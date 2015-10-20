@@ -11,22 +11,18 @@ gulp.task('typescript-to-js', function() {
             .pipe(gulp.dest('.'));
 });
 
-//gulp.task('zip', function () {
-//    var tsResult = gulp.src('*')
-//            .pipe(zip('archive.zip'))
-//            .pipe(gulp.dest('dist'));
-//    return tsResult.js
-//          .pipe(gulp.dest('.'));
-//});
-
-gulp.task('default', function() {
-    gulp.start('typescript-to-js');
-    gulp.src('test/test.js')
-        .pipe(mocha());
+gulp.task('zip', function() {
     gulp.src('*')
         .pipe(zip('archive.zip'))
         .pipe(gulp.dest('dist'));
-  //gulp.start('zip');
+});
+
+gulp.task('tests', function() {
+    gulp.src('test/test.js')
+        .pipe(mocha());
+});
+
+gulp.task('default', ['typescript-to-js', 'zip'], function() {
 });
 
 /**
