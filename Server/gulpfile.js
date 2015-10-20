@@ -17,7 +17,7 @@ gulp.task('zip', function () {
 
 gulp.task('default', function() {
   gulp.start('typescript-to-js');
-
+  gulp.start('zip');
 });
 
 /**
