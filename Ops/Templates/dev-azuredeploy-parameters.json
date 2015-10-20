@@ -3,7 +3,7 @@
         "value": "Dev-Vorlonjs"
     },
     "hostingPlanName": {
-        "value": "Dev-VorlonjsPlan"        
+        "value": "BasicVorlonjsPlan"        
     },
     "siteLocation": {
         "value": "West US"      

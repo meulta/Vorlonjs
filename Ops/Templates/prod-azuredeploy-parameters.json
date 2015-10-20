@@ -1,9 +1,9 @@
 {
     "siteName": {
-        "value": "PreviewProd-Vorlonjs"
+        "value": "Prod-Vorlonjs"
     },
     "hostingPlanName": {
-        "value": "PreviewProd-VorlonjsPlan"        
+        "value": "StandardVorlonjsPlan"        
     },
     "siteLocation": {
         "value": "West US"      

@@ -2,14 +2,13 @@
 
 Param(  
     #Paramètres du Azure Ressource Group
-    $resourceGroupeName = "Vorlonjs",
-    $resourceGroupeDeploymentName = "VorlonjsDeployed",
+    $resourceGroupeName = "DevVorlonjs",
+    $resourceGroupeDeploymentName = "DevVorlonjsDeployed",
     $resourceLocation = "West Us",
-    $storageAccountName = "vorlonjsstorage",
     $publishSettingsFile = (Resolve-Path "C:\DEMOS\21 - CLOUD\AZURE\Azure Keys\stephgou - External.publishsettings"),
     $subscriptionName = "stephgou - External",
     $templateFile = "azuredeploy.json",
-    $templateParameterFile = "azuredeploy-parameters.json",
+    $templateParameterFile = "dev-azuredeploy-parameters.json",
     $templateFolder = "..\templates",
     $tagName = "Vorlonjs_RG",
     $tagValue = "Dev"

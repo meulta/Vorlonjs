@@ -60,9 +60,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{E61F2250-EFCE-4B34-AFC3-26FFB42D59FC}"
 	ProjectSection(SolutionItems) = preProject
 		Ops\Templates\azuredeploy-parameters.json = Ops\Templates\azuredeploy-parameters.json
+		Ops\Templates\azuredeploy-redis-insights.json = Ops\Templates\azuredeploy-redis-insights.json
 		Ops\Templates\azuredeploy.json = Ops\Templates\azuredeploy.json
 		Ops\Templates\dev-azuredeploy-parameters.json = Ops\Templates\dev-azuredeploy-parameters.json
-		Ops\Templates\previewprod-azuredeploy-parameters.json = Ops\Templates\previewprod-azuredeploy-parameters.json
+		Ops\Templates\preview-azuredeploy-parameter.json = Ops\Templates\preview-azuredeploy-parameter.json
+		Ops\Templates\prod-azuredeploy-parameters.json = Ops\Templates\prod-azuredeploy-parameters.json
 		Ops\Templates\qa-azuredeploy-parameters.json = Ops\Templates\qa-azuredeploy-parameters.json
 		Ops\Templates\vsoBuildPackage.json = Ops\Templates\vsoBuildPackage.json
 	EndProjectSection
