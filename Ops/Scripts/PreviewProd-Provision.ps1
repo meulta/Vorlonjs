@@ -52,6 +52,21 @@ New-AzureResourceGroupDeployment `
     -Verbose `
     #-StorageAccountName $storageAccountName `
 
+$siteName = "prod-vorlonjs"
+$testSlotName = "preview"
 
+#Définition d'une règle de Ramp Up
+$rule1 = New-Object Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.RampUpRule
+$rule1.ActionHostName = $testSlotName
+$rule1.ReroutePercentage = 10;
+$rule1.Name = "preview"
+
+$rule1.ChangeIntervalInMinutes = 10;
+$rule1.ChangeStep = 5;
+$rule1.MinReroutePercentage = 5;
+$rule1.MaxReroutePercentage = 50;
+
+#Application de la règle de Ramp Up
+Set-AzureWebsite $siteName -Slot Production -RoutingRules $rule1
 $d = get-date
 Write-Host "Stopping Deployment $d"
