@@ -9,15 +9,20 @@ gulp.task('typescript-to-js', function() {
             .pipe(gulp.dest('.'));
 });
 
-gulp.task('zip', function () {
+//gulp.task('zip', function () {
+//    var tsResult = gulp.src('*')
+//            .pipe(zip('archive.zip'))
+//            .pipe(gulp.dest('dist'));
+//    return tsResult.js
+//          .pipe(gulp.dest('.'));
+//});
+
+gulp.task('default', function() {
+    gulp.start('typescript-to-js');
     gulp.src('*')
         .pipe(zip('archive.zip'))
         .pipe(gulp.dest('dist'));
-});
-
-gulp.task('default', function() {
-  gulp.start('typescript-to-js');
-  gulp.start('zip');
+  //gulp.start('zip');
 });
 
 /**
