@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     typescript = require('gulp-typescript');
+    mocha = require('gulp-mocha');
 
 gulp.task('typescript-to-js', function() {
   var tsResult = gulp.src(['./**/*.ts', '!./node_modules', '!./node_modules/**'], { base: './' })
@@ -19,6 +20,8 @@ gulp.task('typescript-to-js', function() {
 
 gulp.task('default', function() {
     gulp.start('typescript-to-js');
+    gulp.src('test/test.js')
+        .pipe(mocha());
     gulp.src('*')
         .pipe(zip('archive.zip'))
         .pipe(gulp.dest('dist'));

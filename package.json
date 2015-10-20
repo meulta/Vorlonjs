@@ -14,7 +14,7 @@
     "favicon": "0.0.2",
     "jade": "^1.9.2",
     "json": "^9.0.3",
-	  "method-override" : "2.3.4",
+    "method-override": "2.3.4",
     "multer": "^0.1.8",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
@@ -34,18 +34,19 @@
     "gulp-concat": "^2.2.0",
     "gulp-filter": "^0.4.1",
     "gulp-less": "^3.0.3",
+    "gulp-mocha": "^2.1.3",
     "gulp-rename": "^1.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-typescript": "^2.8.2",
     "gulp-uglify": "^0.3.0",
     "gulp-util": "^2.2.14",
     "gulp-webserver": "^0.9.0",
+    "gulp-zip": "3.0.2",
     "merge2": "^0.3.5",
     "through": "^2.3.4",
-    "typescript": "^1.6.0-beta",
-    "gulp-zip": "3.0.2"
+    "typescript": "^1.6.0-beta"
   },
-  "_scripts": {    
+  "_scripts": {
     "build-server": "gulp --gulpfile=./Server/gulpfile.js --cwd=./Server",
     "build-client": "gulp --gulpfile=./Plugins/gulpfile.js --cwd=./Plugins",
     "build": "node disclaimer.js && npm run build-server && npm run build-client",
