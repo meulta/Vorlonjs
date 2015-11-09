@@ -12,7 +12,7 @@ gulp.task('typescript-to-js', function() {
 });
 
 gulp.task('zip', ['tests'], function() {
-    gulp.src('*')
+    gulp.src('./**/*.*')
         .pipe(zip('archive.zip'))
         .pipe(gulp.dest('dist'));
 });
