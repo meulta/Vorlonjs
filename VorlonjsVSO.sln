@@ -47,33 +47,25 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Plugins", "Plugins\", "{B24
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC73B3FB-92E2-44B9-9763-AE8ADA5CC470}"
 	ProjectSection(SolutionItems) = preProject
+		azuredeploy-parameters.json = azuredeploy-parameters.json
 		azuredeploy.json = azuredeploy.json
+		CONTRIBUTING.md = CONTRIBUTING.md
 		deploy.cmd = deploy.cmd
+		disclaimer.js = disclaimer.js
+		gulpfile.js = gulpfile.js
+		LICENSE = LICENSE
 		package.json = package.json
+		README.md = README.md
+		whatsnew.md = whatsnew.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ops", "Ops", "{D5CD795A-E221-406B-A954-8180A483BC91}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6F1BD39D-BD8A-43E0-AE6C-38E3DD912A3B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{066F6E0E-53AB-41C0-8675-214640C94EAE}"
 	ProjectSection(SolutionItems) = preProject
-		Ops\Scripts\Dev-Provision.ps1 = Ops\Scripts\Dev-Provision.ps1
-		Ops\Scripts\Dev-ProvisionWithStorage.ps1 = Ops\Scripts\Dev-ProvisionWithStorage.ps1
-		Ops\Scripts\Dev-ServicePrincipalAssignment.ps1 = Ops\Scripts\Dev-ServicePrincipalAssignment.ps1
-		Ops\Scripts\Dev_Deprovision.ps1 = Ops\Scripts\Dev_Deprovision.ps1
-		Ops\Scripts\PreviewProd-Provision.ps1 = Ops\Scripts\PreviewProd-Provision.ps1
-		Ops\Scripts\QA-Provision.ps1 = Ops\Scripts\QA-Provision.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{E61F2250-EFCE-4B34-AFC3-26FFB42D59FC}"
-	ProjectSection(SolutionItems) = preProject
-		Ops\Templates\azuredeploy-parameters.json = Ops\Templates\azuredeploy-parameters.json
-		Ops\Templates\azuredeploy-redis-insights.json = Ops\Templates\azuredeploy-redis-insights.json
-		Ops\Templates\azuredeploy.json = Ops\Templates\azuredeploy.json
-		Ops\Templates\dev-azuredeploy-parameters.json = Ops\Templates\dev-azuredeploy-parameters.json
-		Ops\Templates\preview-azuredeploy-parameter.json = Ops\Templates\preview-azuredeploy-parameter.json
-		Ops\Templates\prod-azuredeploy-parameters.json = Ops\Templates\prod-azuredeploy-parameters.json
-		Ops\Templates\qa-azuredeploy-parameters.json = Ops\Templates\qa-azuredeploy-parameters.json
-		Ops\Templates\vsoBuildPackage.json = Ops\Templates\vsoBuildPackage.json
+		Deployment\azuredeploy.json = Deployment\azuredeploy.json
+		Deployment\dev-azuredeploy-parameters.json = Deployment\dev-azuredeploy-parameters.json
+		Deployment\postazuredeploy.json = Deployment\postazuredeploy.json
+		Deployment\preprod-azuredeploy-parameter.json = Deployment\preprod-azuredeploy-parameter.json
+		Deployment\prod-azuredeploy-parameters.json = Deployment\prod-azuredeploy-parameters.json
 	EndProjectSection
 EndProject
 Global
@@ -88,10 +80,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D5CD795A-E221-406B-A954-8180A483BC91} = {EC73B3FB-92E2-44B9-9763-AE8ADA5CC470}
-		{6F1BD39D-BD8A-43E0-AE6C-38E3DD912A3B} = {D5CD795A-E221-406B-A954-8180A483BC91}
-		{E61F2250-EFCE-4B34-AFC3-26FFB42D59FC} = {D5CD795A-E221-406B-A954-8180A483BC91}
 	EndGlobalSection
 EndGlobal

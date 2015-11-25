@@ -1,4 +1,5 @@
 declare var cssjs: any;
+declare var axe: any;
 
 module VORLON {
     export class WebStandardsClient extends ClientPlugin {
@@ -37,7 +38,7 @@ module VORLON {
             this.hook(window.navigator, "appVersion");
             this.hook(window.navigator, "appName");
             this.hook(window.navigator, "product");
-            this.hook(window.navigator, "vendor");
+            this.hook(window.navigator, "vendor");          
         }
 
         public hook(root, prop) {
@@ -59,38 +60,47 @@ module VORLON {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
-        public startNewAnalyze(data): void {
-            var allHTML = document.documentElement.outerHTML;
-            this.sendedHTML = allHTML;
-
-
-            var node = document.doctype;
-
-            if (node) {
-                var doctypeHtml = "<!DOCTYPE "
-                    + node.name
-                    + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '')
-                    + (!node.publicId && node.systemId ? ' SYSTEM' : '')
-                    + (node.systemId ? ' "' + node.systemId + '"' : '')
-                    + '>';
-                this._doctype = {
-                    html: doctypeHtml,
-                    name: node.name,
-                    publicId: node.publicId,
-                    systemId: node.systemId
-                }
-            }
-            var inlineStylesheets = document.querySelectorAll("style");
-            var stylesheetErrors = null;
-            if (data.analyzeCssFallback) {
-                stylesheetErrors = {}
-                if (inlineStylesheets.length) {
-                    for (var x = 0; x < inlineStylesheets.length; x++) {
-                        this.analyzeCssDocument("inline" + [x], (<HTMLElement>inlineStylesheets[x]).innerHTML, data.id, stylesheetErrors);
+        public startNewAnalyze(data): void {            
+            // Accessibility
+            this._loadNewScriptAsync("axe.min.js", () => {
+                this.trace("axe script loaded");
+                                            
+                // Using aXe
+                axe.a11yCheck(document, (results) => {
+         
+                    // CSS
+                    var allHTML = document.documentElement.outerHTML;
+                    this.sendedHTML = allHTML;
+        
+                    var node = document.doctype;
+        
+                    if (node) {
+                        var doctypeHtml = "<!DOCTYPE "
+                            + node.name
+                            + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '')
+                            + (!node.publicId && node.systemId ? ' SYSTEM' : '')
+                            + (node.systemId ? ' "' + node.systemId + '"' : '')
+                            + '>';
+                        this._doctype = { 
+                            html: doctypeHtml,
+                            name: node.name,
+                            publicId: node.publicId,
+                            systemId: node.systemId
+                        }
                     }
-                }
-            }
-            this.sendCommandToDashboard("htmlContent", { html: allHTML, doctype: this._doctype, url: window.location, browserDetection: this.browserDetectionHook, id: data.id, stylesheetErrors: stylesheetErrors });
+                    var inlineStylesheets = document.querySelectorAll("style");
+                    var stylesheetErrors = null;
+                    if (data.analyzeCssFallback) {
+                        stylesheetErrors = {}
+                        if (inlineStylesheets.length) {
+                            for (var x = 0; x < inlineStylesheets.length; x++) {
+                                this.analyzeCssDocument("inline " + [x], (<HTMLElement>inlineStylesheets[x]).innerHTML, data.id, stylesheetErrors);
+                            }
+                        }
+                    }
+                    this.sendCommandToDashboard("htmlContent", { html: allHTML, doctype: this._doctype, url: window.location, browserDetection: this.browserDetectionHook, id: data.id, stylesheetErrors: stylesheetErrors, a11yCheck: results.violations });
+                });                            
+            }, true);
         }
 
         checkIfNoPrefix(rules: Array<any>, prefix: string) {
@@ -136,7 +146,7 @@ module VORLON {
                         if (!good) {
                             var divTest = document.createElement('div');
                             divTest.style['webkit' + this.capitalizeFirstLetter(_unprefixedPropertyName)] = rules[i].value;
-                            if (divTest.style[_unprefixedPropertyName] == divTest.style['webkit' + this.capitalizeFirstLetter(_unprefixedPropertyName)]) {
+                            if (divTest.style['webkit' + this.capitalizeFirstLetter(_unprefixedPropertyName)] !== undefined) {
                                 good = true;
                             }
                         }

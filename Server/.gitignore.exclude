@@ -11,3 +11,6 @@ public/vorlon.dashboardManager.js.map
 public/vorlon/**/*
 public/stylesheets/**/*.css
 
+
+Scripts/typings/vorlon/**/*.d.ts
+public/stylesheets/style.css

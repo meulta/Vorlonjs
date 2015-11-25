@@ -85,26 +85,13 @@
             Core.Messenger.onError = Core._OnError;
             Core.Messenger.onReload = Core._OnReloadClient;
 
-            // Say 'helo'
-            var heloMessage = {
-                ua: navigator.userAgent
-            };
-
-            Core.Messenger.sendRealtimeMessage("", heloMessage, Core._side, "helo");
+            this.sendHelo();
 
             // Launch plugins
             for (var index = 0; index < Core._clientPlugins.length; index++) {
                 var plugin = Core._clientPlugins[index];
                 plugin.startClientSide();
             }
-
-            document.addEventListener("DOMContentLoaded", () => {
-                for (var index = 0; index < Core._clientPlugins.length; index++) {
-                    var plugin = Core._clientPlugins[index];
-                    plugin.domReady = true;
-                    plugin.whenDOMReady();
-                }
-            });
 
             // Handle client disconnect
             window.addEventListener("beforeunload", function() {
@@ -116,6 +103,17 @@
             setTimeout(() => {
                 this.startClientDirtyCheck();
             }, 500);
+        }
+        
+        public sendHelo(){
+            
+            // Say 'helo'
+            var heloMessage = {
+                ua: navigator.userAgent,
+                identity : sessionStorage["vorlonClientIdentity"] || localStorage["vorlonClientIdentity"]                
+            };
+
+            Core.Messenger.sendRealtimeMessage("", heloMessage, Core._side, "helo");
         }
 
         public startClientDirtyCheck() {
